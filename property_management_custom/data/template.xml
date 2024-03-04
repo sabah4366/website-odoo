@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+        <record id="send_email_to_register" model="mail.template">
+            <field name="name">Email register</field>
+            <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+            <field name="subject">Your PDC cheque has been registered </field>
+            <field name="email_from">{{object.company_id.partner_id.email_formatted}}</field>
+            <field name="body_html" type="html">
+             <div style="margin: 0px; padding: 0px;">
+          <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            <div style="list-style-type: none;">
+              <div class="predefined"/>
+              Hello , <t t-out="object.partner_id.name"/>,<br />
+                <br />
+               Your PDC against the contract invoice <t t-out="object.invoice_ids"/> has been registered /><br />
+                <br />
+            </div>
+          </p>
+        </div>
+      </field>
+        </record>
+
+       <record id="send_email_deposit" model="mail.template">
+            <field name="name"> Email deposit</field>
+            <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+            <field name="subject">Your PDC cheque has been deposit </field>
+            <field name="email_from">{{object.company_id.partner_id.email_formatted}}</field>
+            <field name="body_html" type="html">
+               <div style="margin: 0px; padding: 0px;">
+          <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            <div style="list-style-type: none;">
+              <div class="predefined"/>
+              Hello , <t t-out="object.partner_id.name"/>,<br />
+                <br />
+               Your PDC against the contract invoice <t t-out="object.invoice_ids"/> has been deposited /><br />
+                <br />
+            </div>
+          </p>
+        </div>
+            </field>
+        </record>
+       <record id="send_email_done" model="mail.template">
+            <field name="name"> Email pdc Done</field>
+            <field name="model_id" ref="sh_pdc.model_pdc_wizard"/>
+            <field name="subject">Your PDC cheque has been done </field>
+            <field name="email_from">{{object.company_id.partner_id.email_formatted}}</field>
+            <field name="body_html" type="html">
+               <div style="margin: 0px; padding: 0px;">
+          <p style="margin: 0px; padding: 0px; font-size: 13px;">
+            <div style="list-style-type: none;">
+              <div class="predefined"/>
+              Hello , <t t-out="object.partner_id.name"/>,<br />
+                <br />
+               Your PDC against the contract invoice <t t-out="object.invoice_ids"/> has been done on  <t t-out="object.done_date"/><br />
+                <br />
+            </div>
+          </p>
+        </div>
+            </field>
+        </record>
+
+  </data>
+</odoo>

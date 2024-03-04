@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+      <template id="custom_property_view_item" inherit_id="website.property_view_item" name="Custom Property View Item">
+        <xpath expr="//div[@id='property_container']/div[@class='row']/div[@class='property_item']" position="inside">
+            <!-- Add your additional fields here -->
+            <div class="row">
+                <div class="col-sm-4 m-2">Custom Field:</div>
+                <div class="col m-2">
+                    <!-- Replace 'custom_field' with the actual field name you want to display -->
+                    <h1>Hai</h1>
+                </div>
+            </div>
+        </xpath>
+      </template>
+</odoo>

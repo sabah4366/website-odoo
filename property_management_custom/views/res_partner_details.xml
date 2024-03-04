@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Partner form view inherit -->
+    <record id="view_partner_property_form" model="ir.ui.view">
+        <field name="name">
+            res.partner.view.form.inherit.custom.property.management
+        </field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="emirates_id" />
+                <field name="co_occupants" />
+                 <field name="license_no"   />
+                <field name="license_auth" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

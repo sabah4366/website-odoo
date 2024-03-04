@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_property_rental_pdf">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <style>
+                            .box {
+                            border: 1px solid black;
+                            padding: 10px;
+                            margin: 0 auto;
+                            width: 100%; /* Adjust the width as needed */
+                            display: inline-block;
+                            }
+                            .box1 {
+                            border: 1px solid black;
+                            padding: 0px;
+                            margin: 0 auto;
+                            width: 100%; /* Adjust the width as needed */
+                            display: inline-block;
+                            background-color: #B2BEB5;;
+                            }
+                            .date-label {
+                            display: inline-block;
+                            margin-right: 20px; /* Adjust spacing as needed */
+                            text-align: left;
+                            }
+                            .underline {
+                            border-bottom: 1px solid black;
+                            display: inline-block;
+                            width: 200px; /* Adjust the width as needed */
+                            margin-right: 20px; /* Adjust spacing as needed */
+                            }
+                            .underline1 {
+                            border-bottom: 1px solid black;
+                            display: inline-block;
+                            width: 60%; /* Adjust the width as needed */
+                            margin-right: 20px; /* Adjust spacing as needed */
+                            }
+                            .underline2 {
+                            border-bottom: 1px solid black;
+                            display: inline-block;
+                            width: 20%; /* Adjust the width as needed */
+                            margin-right: 20px; /* Adjust spacing as needed */
+                            }
+                            .arabic-text {
+                            display: inline-block;
+                            vertical-align: top; /* Align with the top of the line */
+                            }
+                            .left-section {
+                            display: inline-block;
+                            text-align: left;
+                            vertical-align: top; /* Align with the top of the line */
+                            }
+                            .center-section {
+                            display: inline-block;
+                            }
+                            .box2 {
+                            display: flex;
+                            justify-content: space-between;
+                            }
+                            .boxone {
+                            width: 40%; /* Adjust width as needed */
+                            height: 100px; /* Adjust height as needed */
+                            background-color: #f0f0f0;
+                            }
+                            .underlinetop {
+                            border-bottom:  1px dashed black;;
+                            display: inline-block;
+                            width: 100%; /* Adjust the width as needed */
+<!--                            margin-right: 20px; /* Adjust spacing as needed */-->
+                            }
+                        </style>
+                        <div class="page mb-2">
+
+                            <div class="box">
+                                <div class="left-section">
+                                    <div class="date-label">
+                                        <strong>Date:</strong>
+                                    </div>
+                                    <div class="underline">
+                                        <t t-esc="o.start_date"/>
+                                    </div>
+                                    <div class="arabic-text">
+                                        اﻟﺘﺎرﻳﺦ
+                                    </div>
+                                </div>
+                                <div class="center-section">
+                                    <p style="text-align:center;">
+                                        <strong>
+                                            عقد الايجار
+                                            <br/>
+                                            TENANCY CONTRACT
+                                        </strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="box1">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td style="width: 50%;border: none;">
+                                        <strong>Owner / Lessor Information</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;  border: none;">
+                                        معلومات المالك / المؤجر
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <div>
+                            <!--                            my start-->
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                    <strong>Owener's Name</strong>
+                                </div>
+                                <div class="col-md-1 " style="width:75%;border-bottom:  1px dashed black;">
+                                        <t t-esc="o.owner_id.owners_name"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 10%;;height:20px; font-size: 15px;text-align:right;">
+                                    اﺳﻢ اﻟﻤﺎﻟﻚ
+                                </div>
+                            </div>
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                    <strong>Lessor's Name</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 75%;border-bottom:  1px dashed black;;">
+                                     <t t-esc="o.owner_id.owners_name"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 10%;;height:20px; font-size: 15px;text-align:right;">
+                                    اﺳﻢ اﻟﻤﺆﺟﺮ
+                                </div>
+                            </div>
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 17%;height:20px; font-size: 15px">
+                                    <strong>Lessor's Emirates Id</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 65%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.owner_id.emirates_id"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 18%;;height:20px; font-size: 15px;text-align:right;">
+                                    اﻟﻬﻮﻳﺔ اﻟﻺﻣﺎرﺗﻴﺔ ﻟﻠﻤﺆﺟﺮ
+                                </div>
+                            </div>
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:22%">
+                                        <strong>License No</strong>
+                                        </div>
+                                        <div class="col" style="width:53%;border-bottom:  1px dashed black;;">
+
+                                        </div>
+                                        <div class="col pe-2" style="width:25%;text-align:right;direction:rtl">
+                                            رﻗﻢ اﻟﺮﺧﺼﺔ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:33%">
+                                        <strong>License Authority </strong>
+                                        </div>
+                                        <div class="col" style="width:40%;border-bottom:  1px dashed black;;">
+
+                                        </div>
+                                        <div class="col" style="width:27%;text-align:right">
+                                               ﺳﻠﻄﺔ اﻟﺘﺮﺧﻴﺺ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                    <strong>Lessor’s Email :</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 64%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.owner_id.lessor_email"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 21%;;height:20px; font-size: 15px;text-align:right;">
+                                    اﻟﺒﺮﻳﺪ اﻟﻺﻟﻜﺘﺮوﻧﻲ ﻟﻠﻤﺆﺟﺮ
+                                </div>
+                            </div>
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px;">
+                                    <strong>Lessor’s Phone :</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 69%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.owner_id.lessor_phone"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 16%;;height:20px; font-size: 15px;text-align:right;">
+                                    رﻗﻢ ﻫﺎﺗﻒ اﻟﻤﺆﺟﺮ
+
+                                </div>
+                            </div>
+
+                            <!--                            my end-->
+
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <div class="box1">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 50%; border: none;">
+                                        <strong>Tenant Information</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;  border: none;">
+                                        ﻣﻌﻠﻮﻣﺎت اﻟﻤﺴﺘﺄﺟﺮ
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                         <!--                            my start-->
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                   <strong>Tenant’s Name:</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 70%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.renter_id.name"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 15%;;height:20px; font-size: 15px;text-align:right;">
+                                                                    اﺳﻢ اﻟﻤﺴﺘﺄﺟﺮ
+
+                                </div>
+                            </div>
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 18%;height:20px; font-size: 15px">
+                                <strong>Tenant’s Emirates ID:</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 63%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.renter_id.emirates_id"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 19%;;height:20px; font-size: 15px;text-align:right;">
+                                اﻟﻬﻮﻳﺔ اﻹﻣﺎراﺗﻴﺔ ﻟﻠﻤﺴﺘﺄﺟﺮ
+                                </div>
+                            </div>
+<!--                        sabah-->
+                         <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:22%">
+                                        <strong>License No</strong>
+                                        </div>
+                                        <div class="col" style="width:53%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.renter_id.license_no"/>
+                                        </div>
+                                        <div class="col pe-2" style="width:25%;text-align:right;direction:rtl">
+                                            رﻗﻢ اﻟﺮﺧﺼﺔ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:33%">
+                                        <strong>License Authority </strong>
+                                        </div>
+                                        <div class="col" style="width:40%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.renter_id.license_auth"/>
+                                        </div>
+                                        <div class="col" style="width:27%;text-align:right">
+                                               ﺳﻠﻄﺔ اﻟﺘﺮﺧﻴﺺ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+
+<!--                        sabah-->
+
+
+
+
+                            <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                <strong>Tenant’s Email :</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 64%;border-bottom:  1px dashed black;;">
+                                    <t t-esc="o.renter_id.email"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 21%;;height:20px; font-size: 15px;text-align:right;">
+                                اﻟﺒﺮﻳﺪ اﻹﻟﻜﺘﺮوﻧﻲ ﻟﻠﻤﺴﺘﺄﺟﺮ
+                                </div>
+                            </div>
+
+<!--                        sabah-->
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:26%">
+                                        <strong>Tenant’s Phone</strong>
+                                        </div>
+                                        <div class="col" style="width:42%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.renter_id.phone"/>
+                                        </div>
+                                        <div class="col pe-2" style="width:32%;text-align:right;direction:rtl">
+                                            رﻗﻢ ﻫﺎﺗﻒ اﻟﻤﺴﺘﺄﺟﺮ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:43%">
+                                        <strong>Number of Co-Occupants</strong>
+                                        </div>
+                                        <div class="col" style="width:37%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.renter_id.co_occupants"/>
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                               ﻋﺪد اﻟﻘﺎﻃﻨﻴﻦ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+
+<!--                        sabah-->
+
+
+                            <!--                            my end-->
+
+
+
+                        <br/>
+                        <br/>
+                        <div class="box1">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 50%;  border: none;">
+                                        <strong>Property Information</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;  border: none;">
+                                        ﻣﻌﻠﻮﻣﺎت اﻟﻌﻘﺎر
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:27%">
+                                        <strong>Property Usage</strong>
+                                        </div>
+                                        <div class="col" style="width:48%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.property_id.property_type"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.property_type"/>
+                                            </t>
+                                        </div>
+                                        <div class="col pe-2" style="width:25%;text-align:right">
+                                             اﺳﺘﺨﺪام اﻟﻌﻘﺎر
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:20%">
+                                        <strong>Plot No</strong>
+                                        </div>
+                                        <div class="col" style="width:60%;border-bottom:  1px dashed black;;">
+                                            <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.plot_number"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.plot_number"/>
+                                            </t>
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                              رﻗﻢ اﻷرض
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:25%">
+                                         <strong>Makani No</strong>
+                                        </div>
+                                        <div class="col" style="width:50%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.makani_number"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.makani_number"/>
+                                            </t>
+
+                                        </div>
+                                        <div class="col pe-2" style="width:25%;text-align:right">
+                                            رﻗﻢ ﻣﻜﺎﻧﻲ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:30%">
+                                        <strong>Building Name</strong>
+                                        </div>
+                                        <div class="col" style="width:50%;border-bottom:  1px dashed black;;">
+                                            <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.building_name"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.building_name"/>
+                                            </t>
+
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                              اﺳﻢ اﻟﻤﺒﻨﻰ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:25%">
+                                         <strong>Property No</strong>
+                                        </div>
+                                        <div class="col" style="width:50%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.property_number"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.property_number"/>
+                                            </t>
+                                        </div>
+                                        <div class="col pe-2" style="width:25%;text-align:right">
+                                             رﻗﻢ اﻟﻌﻘﺎر
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:30%">
+                                        <strong>Property Type </strong>
+                                        </div>
+                                        <div class="col" style="width:50%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.type_property"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.type_property"/>
+                                            </t>
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                              ﻧﻮع اﻟﻮﺣﺪة
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:33%">
+                                        <strong>Property Area (s.m)</strong>
+                                        </div>
+                                        <div class="col" style="width:30%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.property_area"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.property_area"/>
+                                            </t>
+                                        </div>
+                                        <div class="col pe-2" style="width:37%;text-align:right;direction:rtl">
+                                             ﻣﺴﺎﺣﺔ اﻟﻌﻘﺎر(ﻣﺘﺮ ﻣﺮﺑﻊ)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:20%">
+                                        <strong>Location </strong>
+                                        </div>
+                                        <div class="col" style="width:60%;border-bottom:  1px dashed black;;">
+                                             <t t-if="o.property_id.property_category == 'apartment'">
+                                                <t t-esc="o.apartment_id.location"/>
+                                            </t>
+                                            <t t-elif="o.property_id.property_category == 'villa'">
+                                                <t t-esc="o.property_id.location"/>
+                                            </t>
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                              اﻟﻤﻮﻗﻊ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+
+
+
+
+
+
+                        <br/>
+                        <br/>
+                        <div class="box1">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td style="width: 50%; border: none;">
+                                        <strong>Contract Information</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;  border: none;">
+                                        ﻣﻌﻠﻮﻣﺎت اﻟﻌﻘﺪ
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                         <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:30%">
+                                        <strong>Contract Period </strong>
+                                        </div>
+                                        <div class="col" style="width:48%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.start_date"/>/<t t-esc="o.end_date"/>
+                                        </div>
+                                        <div class="col pe-2" style="width:22%;text-align:right;direction:rtl">
+                                             ﻓﺘﺮة اﻟﻌﻘﺪ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:25%">
+                                        <strong>Contract Value </strong>
+                                        </div>
+                                        <div class="col" style="width:55%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.contract_value"/>
+                                        </div>
+                                        <div class="col" style="width:20%;text-align:right">
+                                              ﻗﻴﻤﺔ اﻟﻌﻘﺪ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                         <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                    <div class="row">
+                                         <div class="col" style="width:22%">
+                                        <strong>Annual Rent </strong>
+                                        </div>
+                                        <div class="col" style="width:52%;border-bottom:  1px dashed black;;">
+                                            <t t-esc="o.rent_price"/>
+                                        </div>
+                                        <div class="col pe-2" style="width:26%;text-align:right;direction:rtl">
+                                             ﻻﻳﺠﺎر اﻟﺴﻨﻮي
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="width: 50%;height:20px; font-size: 15px;">
+                                     <div class="row">
+                                         <div class="col" style="width:43%">
+                                        <strong>Security Deposit Amount </strong>
+                                        </div>
+                                        <div class="col" style="width:39%;border-bottom:  1px dashed black;">
+                                            <t t-esc="o.security_amount"/>
+                                        </div>
+                                        <div class="col" style="width:18%;text-align:right;">
+                                              ﻣﺒﻠﻎ اﻟﺘﺄﻣﻴﻦ
+                                        </div>
+                                    </div>
+
+                                </div>
+                         </div>
+                        <div class="row mt-2 mb-2">
+                                <div class="col-md-5" style="width: 15%;height:20px; font-size: 15px">
+                                <strong>Mode of Payment</strong>
+                                </div>
+                                <div class="col-md-1" style="width: 75%;border-bottom:  1px dashed black;">
+                                    <t t-esc="o.payment_type"/>
+                                </div>
+                                <div class="col-md-5"
+                                     style="width: 10%;;height:20px; font-size: 15px;text-align:right;">
+                                  ﻃﺮﻳﻘﺔ اﻟﺪﻓﻊ
+                                </div>
+                        </div>
+
+
+
+
+                        <br/>
+                        <br/>
+                        <div class="box1 mt-3">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%; border:none">
+                                        <strong>Terms and Conditions</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right; border:none">
+                                        الأحكام والشروط
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <!--                        start-->
+                        <div class="row mt-5 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>1. The tenant has inspected the premises and agreed to lease the unit on its
+                                    current condition.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl">
+                                <p>
+                                    1. قام المستأجر بمعاينة المبنى ووافق على تأجير الوحدة بحالتها الحالية.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>2. Tenant undertakes to use the premises for designated purpose, tenant has no
+                                    rights to
+                                    transfer or relinquish the tenancy contract either with or to without
+                                    counterpart to any without
+                                    landlord written approval. Also, tenant is not allowed to sublease the premises
+                                    or any part thereof
+                                    to third party in whole or in part unless it is legally permitted
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl">
+                                <p>
+                                    2. يتعهد المستأجر باستخدام المبنى للغرض المخصص له، وليس للمستأجر أي حقوق في ذلك
+
+                                    نقل عقد الإيجار أو التنازل عنه سواء مع أو بدون مقابل لأي بدون
+
+                                    موافقة كتابية من المالك. كما لا يجوز للمستأجر تأجير المبنى أو أي جزء منه من
+                                    الباطن
+                                    إلى طرف ثالث كليًا أو جزئيًا ما لم يكن ذلك مسموحًا به قانونًا
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>3. The tenant undertakes not to make any amendments, modifications or addendums
+                                    to the
+                                    premises subject of the contract without obtaining the landlord written
+                                    approval. Tenant shall be
+                                    liable for any damages or failure due to that.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content;; font-size: 13px;text-align:right;direction: rtl">
+                                <p>
+                                    3. يتعهد المستأجر بعدم إجراء أي تعديلات أو تعديلات أو إضافات على العقار
+
+                                    العقار موضوع العقد دون الحصول على موافقة كتابية من المالك. يجب أن يكون المستأجر
+
+                                    مسؤولة عن أي أضرار أو فشل نتيجة لذلك.
+                                </p>
+                            </div>
+                        </div>
+                        <!--                        end-->
+
+
+                        <div class="box1 mt-2">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%;border:none ">
+                                        <strong>Signature</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;border:none ">
+                                        اﻟﺘﻮﻗﻴﻌﺎت
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-5" style="width: 47%; border: 1px solid black;height:80px; font-size: 14px;padding-top:55px">
+                                <div class="row" style="width:100%" >
+                                    <div class="col" style="width:58%;">
+                                        Tenant's Signature توقيعالمستأجر
+                                    </div>
+                                    <div class="col" style="width:42%;">
+                                        <div class="row" style="width:100%">
+                                            <div class="col" style="width:22%;">Date</div>
+                                            <div class="col" style="width:54%;border-bottom:  1px dashed black;"></div>
+                                            <div class="col" style="width:24%;text-align:right">التاريخ</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 47%; border: 1px solid black;height:80px; font-size: 14px;padding-top:55px">
+                                 <div class="row" style="width:100%" >
+                                    <div class="col" style="width:58%;">
+                                        Lessor’s Signature  توقيعا لمؤجر
+                                    </div>
+                                    <div class="col" style="width:42%;">
+                                        <div class="row" style="width:100%">
+                                            <div class="col" style="width:22%;">Date</div>
+                                             <div class="col" style="width:54%;border-bottom:  1px dashed black;"></div>
+                                            <div class="col" style="width:24%;text-align:right">التاريخ</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                        my start-->
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>4. The tenant shall be responsible for payment of all electricity, water, cooling and
+                                    gas charges
+                                    resulting of occupying leased unit unless other condition agreed in written.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    4. يكون المستأجر مسؤولا عن سداد كافة فواتير الكهرباء و المياه و التبريد و الغاز
+                                    المترتبة عن اشغاله المأجور مالم يتم الاتفاق على غير ذلك كتابيا
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>5. The tenant must pay the rent amount in the manner and dates agreed with the
+                                    landlord
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    5. يتعهد المستأجر بسداد مبلغ الايجار المتفق عليه في هذا العقد في التواريخ و الطريقة
+                                    المتفق عليها.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>6. The tenant fully undertakes to comply with all the regulations and instructions
+                                    related to the
+                                    management of the property and the use of the premises and of common areas such
+                                    (parking,
+                                    swimming pools, gymnasium, etc…).
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content;; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    6. يلتزم المستأجر التقيد التام بالانظمة و التعليمات المتعلقة باستخدام المأجور و
+                                    المنافع المشتركة (كمواقف السيارات، أحواض السباحة، النادي الصحي، الخ)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>7. Tenancy contract parties declare all mentioned emails addresses and phone numbers
+                                    are
+                                    correct, all formal and legal notifications will be sent to those addresses in case
+                                    of dispute
+                                    between parties.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    7. يقر أطراف التعاقد بصحة العناوين و أرقام الهواتف المذكورة أعلاه، و تكون تلك
+                                    العناوين هي المعتمدة رسميا للإخطارات و الأعلانات القضائية في حال نشوء أي نزاع بين
+                                    أطراف العقد.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>8. The landlord undertakes to enable the tenant of the full use of the premises
+                                    including its
+                                    facilities (swimming pool, gym, parking lot, etc) and do the regular maintenance as
+                                    intended
+                                    unless other condition agreed in written, and not to do any act that would detract
+                                    from the
+                                    premises benefit.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>8 يتعهد المؤجر بتمكين المستأجر من الانتفاع التام بالعقار للغرض المؤجر لأجله و المرافق
+                                    الخاصة به
+                                    (حوض سباحة، نادي صحي، مواقف سيارات.... إلخ) كما يكون مسؤولا عن أعمال الصيانة مالم
+                                    يتم الاتفاق
+                                    على غير ذلك، و عدم التعرض له في منفعة العقار
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>9. By signing this agreement from the first party, the “Landlord” hereby confirms and
+                                    undertakes
+                                    that he is the current owner of the property or his legal representative under legal
+                                    power of
+                                    attorney duly entitled by the competent authorities.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    .9 يعتبر توقيع المؤجر على هذا العقد إقرار منه بأنه المالك الحالي للعقار أو الوكيل
+                                    القانوني للمالك بموجب وكالة قانونية موثقة وفق الأصول لدى الجهات المختصة.
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>10. Any disagreement or dispute may arise from execution or interpretation of this
+                                    contract shall
+                                    be settled by the Rental Dispute Center.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    .10 أي خلاف أو نزاع قد ينشأ عن تنفيذ أو تفسير هذا العقد يعود البت فيه لمركز فض
+                                    المنازعات الإيجارية.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>11. This contract is subject to all provisions of Law No (26) of 2007 regulating the
+                                    relation
+                                    between landlords and tenants in the emirate of Dubai as amended, and as it will be
+                                    changed or
+                                    amended from time to time, as long with any related legislations and regulations
+                                    applied in the
+                                    emirate of Dubai.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    .11 يخضع هذا العقد لكافة أحكام القانون رقم (26) لسنة 2007 بشأن تنظيم العلاقة بين
+                                    مؤجري و مستأجري العقارات في إماراة دبي، و تعديلاته و أي تغيير أو تعديل يطرأ عليه من
+                                    وقت لآخر، كما يخضع للتشريعات و اللوائح الأخرى ذات العلاقة النافذة في دبي.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>12. Any additional condition will not be considered in case it conflicts with law.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content;font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    .12 لا يعتد بأي شرط تم إضافته إلى هذا العقد في حال تعارضه مع القانون.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content;font-size: 13px;">
+                                <p>13. In case of discrepancy occurs between Arabic and non Arabic texts with regards to
+                                    the
+                                    interpretation of this agreement or the scope of its application, the Arabic text
+                                    shall prevail.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;direction: rtl">
+                                <p>
+                                    .13 في حال حدوث أي تعارض أو اختلاف في التفسير بين النص العربيو النص الأجنبي يعتمد
+                                    النص العربي.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 49%;height: fit-content; font-size: 13px;">
+                                <p>14. The landlord undertakes to register this tenancy contract on EJARI affiliated to
+                                    Dubai Land
+                                    Department and provide with all required documents.
+                                </p>
+                            </div>
+                            <div class="col-md-1" style="width: 2%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 49%;height: fit-content; font-size: 13px;text-align:right;direction: rtl;">
+                                <p>
+                                    .14 يتعهد المؤجر بتسجيل عقد الايجار في نظام إيجاري التابع لدائرة الأراضي و الأملاك و
+                                    توفير كافة المستندات اللازمة لذلك.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!--                        my end-->
+
+
+                        <div class="box1 mt-2">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%; border:none">
+                                        <strong>Know your Rights</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;border:none ">
+                                        لمعرفة حقوق الأطراف
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--                        my start-->
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height: fit-content; font-size: 13px;">
+                                <ul>
+                                    <li>
+                                        You may visit Rental Dispute Center website through www.dubailand.gov.ae in case
+                                        of any
+                                        rental dispute between parties.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 44%;height: fit-content; font-size: 13px;text-align:right;direction:rtl">
+                                <ul>
+                                    <li>
+                                        يمكنكم زيارة موقع مركز فض المنازعات الإيجارية من خلال ae.gov.dubailand.www في
+                                        حال نشوءأي نزاع إيجاري بين الأطراف.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height: fit-content; font-size: 13px;">
+                                <ul>
+                                    <li>
+                                        Law No 26 of 2007 regulating relationship between landlords and tenants
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 44%;height: fit-content; font-size: 13px;text-align:right;direction:rtl">
+                                <ul>
+                                    <li>
+                                        الإطلاع على قانون رقم 26 لسنة 2007 بشأن تنظيم العلاقة بين المؤجرين والمستأجرين.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height: fit-content; font-size: 13px;">
+                                <ul>
+                                    <li>
+                                        Law No 33 of 2008 amending law 26 of year 2007.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 44%;height: fit-content; font-size: 13px;text-align:right;direction:rtl">
+                                <ul>
+                                    <li>
+                                        الإطلاع على قانون رقم 33 لسنة 2008 الخاص بتعديل بعض أحكام قانون 26 لعام .2007
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height: fit-content; font-size: 13px;">
+                                <ul>
+                                    <li>
+                                        Law No 43 of 2013 determining rent increases for properties
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 44%;height: fit-content; font-size: 13px;text-align:right;direction:rtl">
+                                <ul>
+                                    <li>
+                                        الإطلاع على قانون رقم 43 لسنة 2013 بشأن تحديد زيادة بدل الإيجار.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--                        my end-->
+
+                        <div class="box1 mt-2">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%; border:none">
+                                        <strong>Attachments for Ejari Registration</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;border:none ">
+                                        مرفقات التسجيل في إيجاري
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height:20px; font-size: 13px;">
+                                1. Original unified tenancy contract
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 47%;;height:20px; font-size: 13px;text-align:right;direction: rtl;">
+                                1 نسخة أصلية عن عقد الايجار الموحد
+
+                            </div>
+                        </div>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%;height:20px; font-size: 13px;">
+                                2. Original emirates ID of applicant
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5"
+                                 style="width: 47%;;height:20px; font-size: 13px;text-align:right;direction: rtl;">
+                                2 الهوية الإماراتية الأصلية لمقدم الطلب
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="box1 mt-2">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%; border:none">
+                                        <strong>Additional Terms</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;border:none ">
+                                        شروط إضافية
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mt-2 mb-2" style="width:100%; font-size: 13px;">
+                            <div class="row" style="width: 100%;height:20px; ">
+                                 <div class="col" style="width: 3%;height:20px;">
+                                        1.
+                                 </div>
+                                 <div class="col" style="border-bottom: 1px dashed black;width:94%;height:15px;"></div>
+                                <div class="col" style="width: 3%;height:20px;text-align:right">
+                                        .1
+                                </div>
+                            </div>
+                             <div class="row" style="width: 100%;height:20px; ">
+                                  <div class="col" style="width: 3%;height:20px;">
+                                        2.
+                                 </div>
+                                 <div class="col" style="border-bottom: 1px dashed black;width:94%;height:15px;"></div>
+                                <div class="col" style="width: 3%;height:20px;text-align:right">
+                                        .2
+                                </div>
+                            </div>
+                             <div class="row" style="width: 100%;height:20px; ">
+                                  <div class="col" style="width: 3%;height:20px;">
+                                        3.
+                                 </div>
+                                 <div class="col" style="border-bottom: 1px dashed black;width:94%;height:15px;"></div>
+                                <div class="col" style="width: 3%;height:20px;text-align:right">
+                                        .3
+                                </div>
+                            </div>
+                             <div class="row" style="width: 100%;height:20px; ">
+                                  <div class="col" style="width: 3%;height:20px;">
+                                        4.
+                                 </div>
+                                 <div class="col" style="border-bottom: 1px dashed black;width:94%;height:15px;"></div>
+                                <div class="col" style="width: 3%;height:20px;text-align:right">
+                                        .4
+                                </div>
+                            </div>
+                             <div class="row" style="width: 100%;height:20px; ">
+                                 <div class="col" style="width: 3%;height:20px;">
+                                        5.
+                                 </div>
+                                 <div class="col" style="border-bottom: 1px dashed black;width:94%;height:15px;"></div>
+                                <div class="col" style="width: 3%;height:20px;text-align:right">
+                                        .5
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-5" style="width: 47%; height:40px; font-size: 12px;">
+                                Note : You may add addendum to this tenancy contract in case you have additional terms
+                                while it needs to be signed by all parties.
+
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 47%;height:40px; font-size: 12px;text-align:right">
+                                ملاحظة: يمكن إضافة ملحق إلى هذا العقد في حال وجود أي شروط إضافية، على أن يوقع من أطراف
+                                التعاقد.
+                            </div>
+                        </div>
+                        <div class="box1 mt-2">
+                            <table style="width: 100%;border:none">
+                                <tr>
+                                    <td style="width: 50%;border:none ">
+                                        <strong>Signature</strong>
+                                    </td>
+
+                                    <td style="width: 50%;text-align:right;border:none ">
+                                        اﻟﺘﻮﻗﻴﻌﺎت
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-md-5" style="width: 47%; border: 1px solid black;height:80px; font-size: 14px;padding-top:55px">
+                                <div class="row" style="width:100%" >
+                                    <div class="col" style="width:58%;">
+                                        Tenant's Signature توقيعالمستأجر
+                                    </div>
+                                    <div class="col" style="width:42%;">
+                                        <div class="row" style="width:100%">
+                                            <div class="col" style="width:22%;">Date</div>
+                                            <div class="col" style="width:53%;border-bottom:  1px dashed black;;"></div>
+                                            <div class="col" style="width:25%;text-align:right">التاريخ</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-1" style="width: 6%;"></div>
+                            <div class="col-md-5" style="width: 47%; border: 1px solid black;height:80px; font-size: 14px;padding-top:55px">
+                                 <div class="row" style="width:100%" >
+                                    <div class="col" style="width:58%;">
+                                        Lessor’s Signature  توقيعا لمؤجر
+                                    </div>
+                                    <div class="col" style="width:42%;">
+                                        <div class="row" style="width:100%">
+                                            <div class="col" style="width:22%;">Date</div>
+                                            <div class="col" style="width:53%;border-bottom:  1px dashed black;;"></div>
+                                            <div class="col" style="width:25%;text-align:right">التاريخ</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

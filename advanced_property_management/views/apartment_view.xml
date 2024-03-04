@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="apartment_view_item" name="apartment_view_item">
+        <t t-call="website.layout">
+            <t t-set="title">Apartment-</t>
+            <div class="oe_structure">
+                <br/>
+                <div class="container apartment_container">
+                    <div class="row" id="apartment_container">
+                        <div class="apartment_item" id="apartment-item"/>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <h1>
+                                    <span t-esc="apartment_id.name"/>
+                                </h1>
+                                <span>
+                                    <p>
+                                        Rent per Month:<span t-esc="apartment_id.rent_month"/>
+                                    </p>
+                                     <p>
+                                        BedRooms:<span t-esc="apartment_id.bedroom"/>
+                                    </p>
+                                    <p>
+                                        BathRooms:<span t-esc="apartment_id.bathroom"/>
+                                    </p>
+                                    <p>
+                                        Furnishing:<span t-esc="apartment_id.furnishing"/>
+                                    </p>
+                                </span>
+                                 <form role="form" action="/book/apartment" method="post" id="open_form" class="align-items-end">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <button type="submit" class="btn btn-primary">Book This Apartment</button>
+                                </form>
+                            </div>
+                            <div class="col-5" >
+                                 <t t-if="apartment_id.image">
+                                            <img t-att-src="image_data_uri(apartment_id.image)"
+                                                 class="card-img-top"
+                                                 style="width:700px"
+                                                 alt="..."/>
+                                 </t>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="contact_apartment_view" name="contact_apartment_view">
+        <t t-call="website.layout">
+            <t t-set="title">Booking Apartment-</t>
+            <div class="oe_structure">
+                <br/>
+                <div class="container booking_apartment_container">
+                    <div class="row" id="booking_apartment_container">
+                        <div class="booking_apartment_item" id="booking-apartment-item"/>
+
+                        <div class="row">
+                            <form role="form" action="/create/booking" method="post" id="rental_form">
+                                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">Name</label>
+                                    <input type="text" name="tenent_id" t-att-value="tenent_id"
+                                           id="tenent_id" class="form-control"
+                                           placeholder="Enter Name" />
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">Street</label>
+                                    <input type="text" name="street" t-att-value="street"
+                                           id="street" class="form-control"
+                                           placeholder="Enter Street" />
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">Street2</label>
+                                    <input type="text" name="street2" t-att-value="street2"
+                                           id="street2street" class="form-control"
+                                           placeholder="Enter Street2" />
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">Apartment Name</label>
+                                    <select name="apartment_id"  id="apartment_id" class="form-control">
+                                        <option value="">Select a Apartment</option>
+                                        <t t-foreach="apartments" t-as="apartment" t-key="apartment.id">
+                                            <option t-att-value="apartment.id">
+                                                <t t-esc="apartment.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+<!--                                    <input type="text" name="apartment_id" t-att-value="apartment_id"-->
+<!--                                           id="apartment_id" class="form-control"-->
+<!--                                           placeholder="Enter Apartment" />-->
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">Zip</label>
+                                    <input type="text" name="zip"
+                                           id="zip" class="form-control"
+                                           placeholder="Enter Zip"/>
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="name" class="control-label">City</label>
+                                    <input type="text" name="city" t-att-value="city"
+                                           id="city" class="form-control"
+                                           placeholder="Enter City" />
+                                </div>
+                                <div class="form-group m-3">
+                                    <label for="state" class="control-label">State</label>
+                                    <select name="state_id"  id="state_id" class="form-control">
+                                        <option value="">Select a State</option>
+                                        <t t-foreach="states" t-as="state" t-key="state.id">
+                                            <option t-att-value="state.id">
+                                                <t t-esc="state.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+<!--                                    <input type="text" name="state_id" t-att-value="state_id"-->
+<!--                                           id="state_id" class="form-control"-->
+<!--                                           placeholder="Enter State" />-->
+                                </div>
+
+                                <div class="form-group m-3">
+                                    <label for="country" class="control-label">Country</label>
+                                    <select name="country_id"  id="country" class="form-control">
+                                        <option value="">Select a Country</option>
+                                        <t t-foreach="countries" t-as="country" t-key="country.id">
+                                            <option t-att-value="country.id">
+                                                <t t-esc="country.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+<!--                                    <input type="text" name="country_id" t-att-value="country_id"-->
+<!--                                           id="country_id" class="form-control"-->
+<!--                                           placeholder="Enter Country" />-->
+                                </div>
+                                <div class="clearfix oe_login_buttons m-3">
+                                    <button type="submit" class="btn btn-primary pull-left">Confirm Booking</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <record id="apartment_thanks" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/apartment-thank-you</field>
+        <field name="website_published">True</field>
+        <field name="key">advanced_property_management.apartment_thanks</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="advanced_property_management.apartment_thanks">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="alert alert-success" role="status">
+                                        The Apartment is Booked successfully.
+                                    </div>
+                                    <p>
+                                        Visit At Any time.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+<!--     <template id="signup_view" name="signup_view">-->
+<!--        <t t-call="website.layout">-->
+<!--            <t t-set="title">Signup</t>-->
+<!--            <div class="oe_structure">-->
+<!--                <br/>-->
+<!--                <div class="container">-->
+<!--                    <div class="row" id="property_container">-->
+<!--                        <div class="col-md-3">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--     </template>-->
+</odoo>

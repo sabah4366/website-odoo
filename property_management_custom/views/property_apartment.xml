@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Property action -->
+    <record id="property_apartment_action" model="ir.actions.act_window">
+        <field name="name">Property Apartment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">property.apartment</field>
+        <field name="view_mode">tree,form,activity</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Your First Apartment!
+            </p>
+        </field>
+    </record>
+    <!-- Property menu items -->
+    <!--    <menuitem id="property_root_menu" name="Property Management"-->
+    <!--              groups="advanced_property_management.group_property_agent"-->
+    <!--              web_icon="advanced_property_management,static/description/icon.png"/>-->
+    <menuitem id="apartment_menu" name="Apartment" parent="advanced_property_management.property_menu"
+              sequence="9"
+              action="property_apartment_action" />
+
+    <!--    <menuitem id="property_property_menu" name="Properties"-->
+    <!--              parent="property_menu"-->
+    <!--              action="property_action" sequence="3"/>-->
+    <!-- Property tree view -->
+    <record id="property_apartment_view_tree" model="ir.ui.view">
+        <field name="name">property.apartment.view.tree</field>
+        <field name="model">property.apartment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="property_id"/>
+                <field name="rent_month"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="property_apartment_view_form" model="ir.ui.view">
+        <field name="name">property.apartment.view.form</field>
+        <field name="model">property.apartment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,available" options="{'clickable': '1'}"/>
+                    <button name="action_available" string="Available"
+                            type="object" class="btn-primary"
+                            attrs="{'invisible':[('state','!=','draft')]}"/>
+                </header>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <!--                        <button name="action_get_map" string='Locate'-->
+                        <!--                                type="object"-->
+                        <!--                                class="oe_stat_button" icon="fa-map-marker"-->
+                        <!--                                attrs="{'invisible':['|',('latitude','=',False),('longitude','=',False)]}"/>-->
+                        <!--                        <button name="action_property_sale_view" type="object"-->
+                        <!--                                class="oe_stat_button"-->
+                        <!--                                icon="fa-dollar" string="Sale"-->
+                        <!--                                attrs="{'invisible':[('state','!=','sold')]}"/>-->
+                        <button name="action_property_rental_view" type="object"
+                                class="oe_stat_button"
+                                icon="fa-dollar" string="Rental"
+                                attrs="{'invisible':[('state','!=','rented')]}"/>
+                    </div>
+                     <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <!--                        <h3>-->
+                        <!--                            <field name="code"/>-->
+                        <!--                        </h3>-->
+                        <br/>
+                    </div>
+                    <!--                    <group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="property_type" widget="radio"-->
+                    <!--                                   options="{'horizontal': True}"/>-->
+                    <!--                            <field name="construct_year"/>-->
+                    <!--                            <field name="property_tags"-->
+                    <!--                                   widget="many2many_tags"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="license_no"/>-->
+                    <!--                            <field name="responsible_id"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                        <group string="Property Details">
+                            <group>
+                            <field name="property_id"/>
+                            <field name="owner_id"/>
+                            <field name="plot_number"/>
+                            <field name="makani_number"/>
+                                 <field name="building_name"/>
+                             </group>
+                            <group>
+
+                                <field name="property_number"/>
+                                <field name="type_property"/>
+                                <field name="property_area"/>
+                                <field name="location"/>
+                                <field name="permission_no"/>
+                            </group>
+                    </group>
+
+                    <group string="Price Details" name="price_details">
+                        <!--                            <field name="sale_rent"/>-->
+                        <!--                            <field name="unit_price"-->
+                        <!--                                   attrs="{'invisible': [('sale_rent','!=','for_sale')]}"/>-->
+                        <field name="rent_month"
+                        />
+                        <!--                            <field name="landlord_id"/>-->
+                    </group>
+                    <!--                    <group string="Land Details"-->
+                    <!--                           attrs="{'invisible': [('property_type','!=','land')]}">-->
+                    <!--                        <group>-->
+                    <!--                            <field name="land_name"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="land_area"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                    <group string="Residential Details"
+                    >
+                        <group>
+                            <field name="type_residence"/>
+                            <!--                            <field name="total_floor"/>-->
+                            <field name="furnishing"/>
+                        </group>
+                        <group>
+                            <field name="bedroom"/>
+                            <field name="bathroom"/>
+                            <!--                            <field name="parking"/>-->
+                        </group>
+                    </group>
+                    <!--                    <group string="Commercial Details"-->
+                    <!--                           attrs="{'invisible': [('property_type','!=','commercial')]}">-->
+                    <!--                        <group>-->
+                    <!--                            <field name="shop_name"/>-->
+                    <!--                            <field name="usage"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="total_floor"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                    <!--                    <group string="Industrial Details"-->
+                    <!--                           attrs="{'invisible': [('property_type','!=','industry')]}">-->
+                    <!--                        <group>-->
+                    <!--                            <field name="industry_name"/>-->
+                    <!--                            <field name="usage"/>-->
+                    <!--                        </group>-->
+                    <!--                        <group>-->
+                    <!--                            <field name="location"/>-->
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                    <notebook>
+
+                        <page string="Measurement" name="measurement">
+                            <field name="area_measurement_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="length"/>
+                                    <field name="width"/>
+                                    <field name="height"/>
+                                    <field name="area"/>
+                                </tree>
+                            </field>
+                            <h2 class="oe_subtotal_footer oe_right">
+                                <group>
+                                    <field name="total_sq_feet"/>
+                                </group>
+                            </h2>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Property search view -->
+    <record id="property_apartment_view_search" model="ir.ui.view">
+        <field name="name">property.apartment.view.search</field>
+        <field name="model">property.apartment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name"/>
+                <group expand="1" string="Group By">
+                    <filter string="Status" context="{'group_by':'state'}"
+                            name="state"/>
+                </group>
+                <searchpanel>
+                    <field name="state" string="Status" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="apartment_booking_action" model="ir.actions.act_window">
+        <field name="name">Apartment Booking</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">apartment.booking</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+
+        </field>
+ </record>
+    <menuitem id="booking_menu" name="Rental Request" parent="advanced_property_management.property_menu"
+              sequence="1"
+    action="apartment_booking_action" />
+
+
+
+    <record id="apartment_booking_view_tree" model="ir.ui.view">
+        <field name="name">apartment.booking.view.tree</field>
+        <field name="model">apartment.booking</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+
+            </tree>
+        </field>
+    </record>
+<record id="apartment_booking_view_form" model="ir.ui.view">
+        <field name="name">apartment.booking.view.form</field>
+        <field name="model">apartment.booking</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,booked" />
+                </header>
+
+                <sheet>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+
+                        <br/>
+                    </div>
+
+                  <group string="Address Details">
+                      <field name ="tenent_id"/>
+                            <label for="street" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..."
+                                       class="o_address_street"/>
+                                <field name="street2" placeholder="Street 2..."
+                                       class="o_address_street"/>
+                                <field name="city" placeholder="City"
+                                       class="o_address_city"/>
+                                <field name="zip" placeholder="ZIP"
+                                       class="o_address_zip"/>
+                                <field name="state_id" class="o_address_state"
+                                       placeholder="State"
+                                       options='{"no_open": True}'/>
+                                <field name="country_id" placeholder="Country"
+                                       class="o_address_country"
+                                       options='{"no_open": True, "no_create": True}'/>
+                            </div>
+
+                        </group>
+                                    <group string="Private Contact">
+                                        <field name="address_home_id" />
+                                        <field name="private_email" string="Email"/>
+                                        <field name="phone" string="Phone" readonly="True"/>
+                                        <field name="bank_account_id" context="{'default_partner_id': address_home_id}"/>
+                                        <field name="lang" string="Language"/>
+                                        <label for="km_home_work"/>
+                                        <div class="o_row" name="div_km_home_work">
+                                        </div>
+                                    </group>
+                                    <group string="Family Status">
+                                        <field name="marital"/>
+                                        <field name="spouse_complete_name" attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])]}"/>
+                                        <field name="spouse_birthdate" attrs="{'invisible': [('marital', 'not in', ['married', 'cohabitant'])]}"/>
+                                        <field name="children"/>
+                                        <separator name="emergency" string="Emergency"/>
+                                        <field name="emergency_contact"/>
+                                        <field name="emergency_phone" class="o_force_ltr"/>
+                                    </group>
+                                    <group string="Education">
+                                        <field name="certificate"/>
+                                        <field name="study_field"/>
+                                        <field name="study_school"/>
+                                        <separator name="has_work_permit" string="Work Permit"/>
+                                        <field name="visa_no"/>
+                                        <field name="permit_no"/>
+                                        <field name="visa_expire"/>
+                                        <field name="work_permit_expiration_date"/>
+                                        <field name="has_work_permit" widget="work_permit_upload"/>
+                                    </group>
+                                    <group string="Citizenship">
+                                        <field name="country_id" />
+                                        <field name="identification_id"/>
+                                        <field name="passport_id"/>
+                                        <field name="gender"/>
+                                        <field name="birthday"/>
+                                        <field name="place_of_birth"/>
+                                        <field name="country_of_birth"/>
+                                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="activity_ids"/>
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Property search view -->
+    <record id="apartment_booking_view_search" model="ir.ui.view">
+        <field name="name">apartment.booking.view.search</field>
+        <field name="model">apartment.booking</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Name"/>
+                <group expand="1" string="Group By">
+                    <filter string="Status" context="{'group_by':'state'}"
+                            name="state"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

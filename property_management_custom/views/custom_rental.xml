@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="property_rental_view_form_inherit" model="ir.ui.view">
+        <field name="name">property.rental.view.form.inherit</field>
+        <field name="model">property.rental</field>
+        <field name="inherit_id" ref="advanced_property_management.property_rental_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/group/field[@name='property_id']" position="after">
+                <field name="apartment_id"/>
+                <field name="related_booking_id" invisible="1"/>
+
+            </xpath>
+            <xpath expr="//form/sheet/group/group/field[@name='owner_id']" position="replace">
+                <field name="owner_id"/>
+                <field name="payment_type"/>
+                <field name="security_amount"/>
+                <!--                  <field name = "rent_price"/>-->
+
+
+            </xpath>
+            <!--             <xpath expr="//form/sheet/group/group/field[@name='next_invoice']" position="attributes">-->
+            <!--                          <attribute name="invisible">1</attribute>-->
+
+            <!--                </xpath>-->
+
+
+            <xpath expr="//form/sheet/group/group[2]" position="replace">
+                <group>
+                    <field name="renter_id"/>
+                    <field name="invoice_policy"/>
+
+
+                    <!--                            <div class="oe_inline" >-->
+
+                    <!--                                    <field name="start_date"-->
+                    <!--                                           placeholder="From Date"-->
+                    <!--                                          />-->
+                    <!--                                    <span class="o_form_label mx-3 oe_edit_only"-->
+                    <!--                                         > to </span>-->
+                    <!--                                    <field name="end_date"-->
+
+                    <!--                                           placeholder="To Date"/>-->
+                    <!--                                </div>-->
+                    <field name="next_invoice" invisible="1"/>
+                    <label for="start_date"/>
+                    <div>
+                        <field name="start_date" class="oe_inline" placeholder="Start Date"/>
+                        <label for="end_date"/>
+                        <field name="end_date" class="oe_inline" placeholder="End Date"/>
+                    </div>
+                    <field name="contract_value"/>
+
+
+                </group>
+
+                <!--                  <group>-->
+                <!--                   -->
+                <!--                  </group>-->
+
+
+            </xpath>
+
+            <xpath expr="//form/sheet/div[@name='button_box']" position="inside">
+                <button name="action_view_pdc" type="object"
+                        class="oe_stat_button" icon="fa-money" string="PDC Payment">
+
+                </button>
+            </xpath>
+            <xpath expr="//form/header/button[@name='action_create_contract']" position="after">
+                <button name="print_rental_contract"
+                        type="object"
+                        string="Print"
+                        class="oe_highlight"
+                        attrs="{'invisible':[('state','!=','in_contract')]}"
+                />
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Terms and conditions">
+                   <field name="terms_conditions_ids">
+                       <tree create="0">
+                           <field name="terms_and_conditions_english"  />
+                           <field name="terms_and_conditions_arabic" />
+                       </tree>
+                   </field>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

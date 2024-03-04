@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+       <!-- <data>-->
+
+
+            
+
+            <report
+            id="report_contract_rental"
+            model="property.rental"
+            string="Property Rental Report"
+            report_type="qweb-pdf"
+            name="property_management_custom.report_property_rental_pdf"
+            file="property_management_custom.report_property_rental_pdf"
+            menu ="False"/>
+
+<!--
+        </data>
+-->
+    </odoo>

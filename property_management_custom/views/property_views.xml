@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+              <record id="property_property_view_form_inherit" model="ir.ui.view">
+            <field name="name">property.property.view.form</field>
+            <field name="model">property.property</field>
+            <field name="inherit_id" ref="advanced_property_management.property_property_view_form"/>
+            <field name="arch" type="xml">
+                    <xpath expr="//form/sheet/group/group[@name='price_details']/field[@name='rent_month']" position="replace">
+                          <field name="rent_month"
+                                    attrs="{'invisible': [('property_category', '=', 'apartment')]}"/>
+                </xpath>
+                <xpath expr="//button[@name='action_available']" position="replace">
+                           <button name="action_available" string="Publish"
+                            type="object" class="btn-primary"
+                            attrs="{'invisible':[('state','!=','draft')]}"/>
+                </xpath>
+<xpath expr="//form/sheet/group/group/field[@name='property_type']" position="before">
+                   <field name="property_category" widget="radio"
+                                   options="{'horizontal': True}"/>
+                 </xpath>
+                <xpath expr="//form/sheet/group/group/field[@name='property_type']" position="after">
+                  <field name="emirate_state"/>
+                 </xpath>
+                <xpath expr="//form/sheet/group/group[@name='price_details']" position="before">
+                  <group string="Property Details" name="property_details" attrs="{'invisible':[('property_category','!=','villa')]}">
+
+
+                      <field name="plot_number"/>
+                      <field name="makani_number"/>
+                      <field name="building_name"/>
+                      <field name="property_number"/>
+                      <field name="type_property"/>
+                      <field name="property_area"/>
+                       <field name="location"/>
+                      <field name="permission_no"/>
+                        </group>
+                 </xpath>
+                 <xpath expr="//form/sheet/group/group/field[@name='type_residence']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                 </xpath>
+                <xpath expr="//form/sheet/group/group/field[@name='furnishing']" position="replace">
+                     <field name="furnishing" attrs="{'invisible': [('property_category', '=', 'apartment')]}"/>
+                 </xpath>
+                <xpath expr="//field[@name='state']" position="replace">
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,available" attrs="{'invisible': [('property_category', '=', 'apartment')]}"/>
+                 </xpath>
+                 <xpath expr="//form/sheet/group/group/field[@name='bedroom']" position="replace">
+                   <field name="bedroom" attrs="{'invisible': [('property_category', '=', 'apartment')]}"/>
+                 </xpath>
+                   <xpath expr="//form/sheet/group/group/field[@name='landlord_id']" position="replace">
+                    <field name="landlord_id"/>
+                 </xpath>
+
+                 <xpath expr="//form/sheet/group/group/field[@name='bathroom']" position="replace">
+                     <field name="bathroom"  attrs="{'invisible': [('property_category', '=', 'apartment')]}"/>
+                 </xpath>
+ <xpath expr="//page[@name='measurement']" position="attributes">
+                  <attribute name="attrs">{'invisible': [('property_category', '=', 'apartment')]}</attribute>
+                 </xpath>
+
+                <xpath expr="//form/sheet/div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button"  type="object" name="action_get_apartment" icon="fa-home" attrs="{'invisible': [('apartment_count', '=', 0)]}">
+                 <field string="Apartment(s)" name="apartment_count" widget="statinfo"/>
+              </button>
+                </xpath>
+            </field>
+              </record>
+<!--    <delete model="ir.ui.menu" id="advanced_property_management.property_menu" />-->
+    <menuitem name="Property Sale"
+            id="advanced_property_management.property_sale_menu"
+            groups="make_invisible"
+            sequence="80"/>
+      <menuitem id="advanced_property_management.property_auction_menu" name="Property Auction"
+              groups="make_invisible"/>
+<!--    <menuitem id="property_sale_menu" name="Property Sale"-->
+<!--              parent="advanced_property_management.property_menu"-->
+<!--              action="property_sale_action" sequence="5" hide ="1"/>-->
+
+
+<!--    search panel for property category-->
+    <record id="property_property_search_panel" model="ir.ui.view">
+        <field name="name">property.property.search.panel</field>
+        <field name="model">property.property</field>
+        <field name="inherit_id"
+               ref="advanced_property_management.property_property_view_search"/>
+        <field name="arch" type="xml">
+            <searchpanel position="inside">
+                    <field name="property_category" string="Property Category" enable_counters="1"/>
+            </searchpanel>
+        </field>
+    </record>
+</odoo>
